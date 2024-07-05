@@ -1,0 +1,36 @@
+from django.db import models
+
+class CSVData(models.Model):
+    ac_year = models.CharField(max_length=20,default='0')
+    age = models.IntegerField(default=0)
+    state_cd = models.IntegerField(default=0)
+    state_name = models.CharField(max_length=100,default='0')
+    district_cd = models.IntegerField(default=0)
+    district_name = models.CharField(max_length=100,default='0')
+    class_1_boys = models.IntegerField(default=0)
+    class_2_boys = models.IntegerField(default=0)
+    class_3_boys = models.IntegerField(default=0)
+    class_4_boys = models.IntegerField(default=0)
+    class_5_boys = models.IntegerField(default=0)
+    class_6_boys = models.IntegerField(default=0)
+    class_7_boys = models.IntegerField(default=0)
+    class_8_boys = models.IntegerField(default=0)
+    class_9_boys = models.IntegerField(default=0)
+    class_10_boys = models.IntegerField(default=0)
+    class_11_boys = models.IntegerField(default=0)
+    class_12_boys = models.IntegerField(default=0)
+    class_1_girls = models.IntegerField(default=0)
+    class_2_girls = models.IntegerField(default=0)
+    class_3_girls = models.IntegerField(default=0)
+    class_4_girls = models.IntegerField(default=0)
+    class_5_girls = models.IntegerField(default=0)
+    class_6_girls = models.IntegerField(default=0)
+    class_7_girls = models.IntegerField(default=0)
+    class_8_girls = models.IntegerField(default=0)
+    class_9_girls = models.IntegerField(default=0)
+    class_10_girls = models.IntegerField(default=0)
+    class_11_girls = models.IntegerField(default=0)
+    class_12_girls = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.district_name} ({self.ac_year})"
