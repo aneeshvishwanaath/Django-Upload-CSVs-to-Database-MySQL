@@ -157,7 +157,11 @@ def get_filtered_data(request):
 
     if limit:
         query += " LIMIT %(limit)s"
-        params['limit'] = limit
+        params['limit'] = int(limit)  # Ensure limit is treated as an integer
+
+    # Debug print
+    print("Executing query:", query)
+    print("With parameters:", params)
 
     try:
         with connection.cursor() as cursor:
@@ -165,20 +169,22 @@ def get_filtered_data(request):
             columns = [col[0] for col in cursor.description]
             rows = cursor.fetchall()
 
-            data = [dict(zip(columns, row)) for row in rows]
-
-            # Create HTML table
-            html = "<html><body><table border='1'><tr>"
+            # Generate HTML content
+            html = "<html><body><h2>Filtered Data</h2><table border='1' style='border-collapse:collapse;'>"
+            # Add table header
+            html += "<tr>"
             for column in columns:
-                html += f"<th>{column}</th>"
+                html += f"<th style='padding: 5px;'>{column}</th>"
             html += "</tr>"
-            for row in data:
+            # Add table rows
+            for row in rows:
                 html += "<tr>"
-                for value in row.values():
-                    html += f"<td>{value}</td>"
+                for value in row:
+                    html += f"<td style='padding: 5px;'>{value}</td>"
                 html += "</tr>"
             html += "</table></body></html>"
 
             return Response(html, status=status.HTTP_200_OK, content_type="text/html")
+            
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)

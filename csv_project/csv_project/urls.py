@@ -10,9 +10,9 @@ from drf_yasg.views import get_schema_view
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Your API",
+      title="Upload CSV to Database",
       default_version='v1',
-      description="Your API Description",
+      description="This is an API designed to upload CSV files to a Database",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="contact@yourdomain.com"),
       license=openapi.License(name="BSD License"),
