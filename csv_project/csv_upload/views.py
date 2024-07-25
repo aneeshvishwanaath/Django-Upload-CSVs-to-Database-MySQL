@@ -5,7 +5,6 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from django.db import transaction, connection
 import csv
 from io import TextIOWrapper
-
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 
